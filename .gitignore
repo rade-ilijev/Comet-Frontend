@@ -8,6 +8,8 @@ pnpm-debug.log*
 lerna-debug.log*
 yarn.lock
 
+components.d.ts
+
 node_modules
 .DS_Store
 dist
