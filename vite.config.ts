@@ -35,6 +35,13 @@ export default defineConfig({
       exclude: [/node_modules/, /\.git/, /\.nuxt/],
     }),
   ],
+  css: {
+    preprocessorOptions: {
+      scss: {
+        additionalData: `@import "./src/assets/variables/colors/default.scss";`,
+      },
+    },
+  },
   resolve: {
     alias: {
       "@": fileURLToPath(new URL("./src", import.meta.url)),

@@ -4,9 +4,10 @@
   </div>
 </template>
 
-<style>
+<style lang="scss">
 @media (min-width: 1024px) {
   .about {
+    color: $white;
     min-height: 100vh;
     display: flex;
     align-items: center;
