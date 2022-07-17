@@ -9,16 +9,9 @@ declare module '@vue/runtime-core' {
   export interface GlobalComponents {
     AboutView: typeof import('./src/views/AboutView.vue')['default']
     App: typeof import('./src/App.vue')['default']
-    HelloWorld: typeof import('./src/components/HelloWorld.vue')['default']
+    DekstopHorizontalNavigation: typeof import('./src/layouts/navigations/DekstopHorizontalNavigation.vue')['default']
     HomeView: typeof import('./src/views/HomeView.vue')['default']
-    IconCommunity: typeof import('./src/components/icons/IconCommunity.vue')['default']
-    IconDocumentation: typeof import('./src/components/icons/IconDocumentation.vue')['default']
-    IconEcosystem: typeof import('./src/components/icons/IconEcosystem.vue')['default']
-    IconSupport: typeof import('./src/components/icons/IconSupport.vue')['default']
-    IconTooling: typeof import('./src/components/icons/IconTooling.vue')['default']
     RouterLink: typeof import('vue-router')['RouterLink']
     RouterView: typeof import('vue-router')['RouterView']
-    TheWelcome: typeof import('./src/components/TheWelcome.vue')['default']
-    WelcomeItem: typeof import('./src/components/WelcomeItem.vue')['default']
   }
 }

@@ -1,0 +1,90 @@
+@mixin rounded-corner($arc) {
+  -moz-border-radius: $arc;
+  -webkit-border-radius: $arc;
+  border-radius: $arc;
+}
+
+@mixin image {
+  max-width: 100%;
+  height: auto;
+  background-position: center center;
+  background-size: cover;
+  background-repeat: no-repeat;
+}
+
+@mixin center {
+  max-width: 100%;
+  height: auto;
+  background-position: center center;
+  background-size: cover;
+  background-repeat: no-repeat;
+}
+
+// Responsiveness
+
+$gap: 32px !default;
+$tablet: 769px !default;
+$desktop: 960px + (2 * $gap) !default;
+$widescreen: 1152px + (2 * $gap) !default;
+$widescreen-enabled: true !default;
+$fullhd: 1344px + (2 * $gap) !default;
+$fullhd-enabled: true !default;
+
+@mixin devices($breakpoint) {
+
+  @if $breakpoint == mobile {
+    @media screen and (max-width: $tablet - 1px) {
+      @content
+    }
+  }
+
+  @if $breakpoint == tablet {
+    @media screen and (min-width: $tablet), print {
+      @content
+    }
+  }
+
+  @if $breakpoint == tablet-only {
+    @media screen and (min-width: $tablet) and (max-width: $desktop - 1px) {
+      @content
+    }
+  }
+
+  @if $breakpoint == desktop {
+    @media screen and (min-width: $desktop) {
+      @content
+    }
+  }
+
+  @if $breakpoint == desktop-only {
+    @if $widescreen-enabled {
+      @media screen and (min-width: $desktop) and (max-width: $widescreen - 1px) {
+        @content
+      }
+    }
+  }
+
+  @if $breakpoint == widescreen {
+    @if $widescreen-enabled {
+      @media screen and (min-width: $widescreen) {
+        @content
+      }
+    }
+  }
+
+  @if $breakpoint == widescreen-only {
+    @if $widescreen-enabled and $fullhd-enabled {
+      @media screen and (min-width: $widescreen) and (max-width: $fullhd - 1px) {
+        @content
+      }
+    }
+  }
+
+  @if $breakpoint == fullhd {
+    @if $fullhd-enabled {
+      @media screen and (min-width: $fullhd) {
+        @content
+      }
+    }
+  }
+}

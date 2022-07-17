@@ -16,6 +16,15 @@ jobs:
       - name: Install
         run: yarn
 
+      - name: ESlint
+        run: yarn lint
+
+      - name: Unit Testing
+        run: yarn test:unit
+
+      - name: E2E Testing
+        run: yarn test:e2e
+
       - name: Build
         run: yarn build
 
@@ -29,7 +38,6 @@ jobs:
         with:
           name: app-build
           path: ${{ github.sha }}.tar.gz
-
 
   upload:
     name: "Upload"
