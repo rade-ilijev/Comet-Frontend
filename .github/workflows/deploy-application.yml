@@ -26,7 +26,7 @@ jobs:
 #        run: yarn test:e2e
 
       - name: Build
-        run: yarn build
+        run: yarn build-only --mode staging
 
       - name: Create deployment artifact
         env:

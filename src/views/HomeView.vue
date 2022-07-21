@@ -2,6 +2,7 @@
   <main>
     <section id="welcome">
       <div class="hero">
+        <h1 style="color: #fff">{{ name }}</h1>
         <div class="left">
           <img src="../assets/logo.png" />
         </div>
@@ -9,6 +10,17 @@
     </section>
   </main>
 </template>
+<script lang="ts">
+export default {
+  setup() {
+    const name = process.env.VITE_APP_TITLE;
+
+    return {
+      name,
+    };
+  },
+};
+</script>
 <style lang="scss">
 #welcome {
   max-width: 100%;

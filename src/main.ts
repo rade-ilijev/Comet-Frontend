@@ -7,7 +7,7 @@ import router from "./router";
 import "@/assets/scss/main.scss";
 
 const axiosInstance = axios.create({
-  baseURL: "http://127.0.0.1:8000/",
+  baseURL: process.env.VITE_APP_BASE_URL,
   headers: {
     Accept: "application/json",
     "Access-Control-Allow-Origin": "*",

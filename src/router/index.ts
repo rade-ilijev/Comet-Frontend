@@ -5,7 +5,7 @@ const loadComponent = (view: string) => {
 };
 
 const router = createRouter({
-  history: createWebHistory(import.meta.env.BASE_URL),
+  history: createWebHistory(),
   scrollBehavior() {
     return { top: 0 };
   },
@@ -13,7 +13,7 @@ const router = createRouter({
     {
       path: "/",
       name: "home",
-      component: loadComponent('HomeView'),
+      component: loadComponent("HomeView"),
     },
   ],
 });
