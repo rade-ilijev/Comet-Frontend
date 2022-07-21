@@ -1,5 +1,5 @@
 # Before running any deployment, be aware that VPS/Dedicated needs to be configured with next steps
-name: Deploy Frontend
+name: Deploy Staging
 
 on:
   push:
@@ -92,6 +92,6 @@ jobs:
           port: ${{ secrets.VPS_PORT }}
           envs: GITHUB_SHA,RELEASE_PATH,ACTIVE_RELEASE_PATH,STORAGE_PATH,BASE_PATH,ENV_PATH,LARAVEL_ENV
           script: |
-            ln -s -f ${BASE_PATH}/.env $RELEASE_PATH
+            ln -s -f ${BASE_PATH}/.env.staging $RELEASE_PATH
             ln -s -n -f $RELEASE_PATH $ACTIVE_RELEASE_PATH
             service nginx restart
