@@ -1,7 +1,7 @@
 import { createRouter, createWebHistory } from "vue-router";
 
 const loadComponent = (view: string) => {
-  return () => import(`../views/${view}.vue`);
+  return () => import(`./src/pages/${view}.vue`);
 };
 
 const router = createRouter({

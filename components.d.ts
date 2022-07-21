@@ -9,7 +9,7 @@ declare module '@vue/runtime-core' {
   export interface GlobalComponents {
     App: typeof import('./src/App.vue')['default']
     DekstopHorizontalNavigation: typeof import('./src/layouts/navigations/DekstopHorizontalNavigation.vue')['default']
-    HomeView: typeof import('./src/views/HomeView.vue')['default']
+    'Index.page': typeof import('./src/pages/index.page.vue')['default']
     RouterLink: typeof import('vue-router')['RouterLink']
     RouterView: typeof import('vue-router')['RouterView']
   }
