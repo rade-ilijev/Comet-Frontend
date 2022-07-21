@@ -13,12 +13,14 @@
     "lint": "eslint . --ext .vue,.js,.jsx,.cjs,.mjs,.ts,.tsx,.cts,.mts --fix --ignore-path .gitignore"
   },
   "dependencies": {
+    "@vue/server-renderer": "^3.2.37",
     "axios": "^0.27.2",
     "pinia": "^2.0.14",
     "sass": "^1.53.0",
     "sass-loader": "^13.0.2",
     "unplugin-vue-components": "^0.21.1",
     "vite-plugin-environment": "^1.1.2",
+    "vite-plugin-ssr": "^0.4.10",
     "vue": "^3.2.37",
     "vue-router": "^4.1.2"
   },

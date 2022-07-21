@@ -2,7 +2,7 @@ import { createApp } from "vue";
 import { createPinia } from "pinia";
 import axios from "axios";
 import App from "./App.vue";
-import router from "./router";
+// import router from "./router";
 
 import "@/assets/scss/main.scss";
 
@@ -22,6 +22,6 @@ const app = createApp(App);
 app.config.globalProperties.$api = { ...axiosInstance };
 
 app.use(createPinia());
-app.use(router);
+// app.use(router);
 
 app.mount("#app");
