@@ -1,0 +1,14 @@
+@import "_mixins";
+@import "_variables";
+@import "_fonts";
+
+body, html {
+  min-height: 100%;
+  margin: 0;
+  background: $body-background;
+}
+
+.row {
+  display: grid;
+  grid-template-columns: repeat(11, 1fr);
+}

@@ -1,0 +1,12 @@
+[
+  {
+    "name": "FRONT-VPS",
+    "ip": "162.19.137.47",
+    "username": "ubuntu",
+    "password": "93eWpf8Qhzdz",
+    "port": 22,
+    "beforeHooks": "echo $GITHUB_SHA",
+    "afterHooks": "",
+    "path": "/var/www/html"
+  }
+]

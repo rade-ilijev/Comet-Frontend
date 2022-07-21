@@ -1,0 +1,97 @@
+# Before running any deployment, be aware that VPS/Dedicated needs to be configured with next steps
+name: Deploy Staging
+
+on:
+  push:
+    branches:
+      - master
+
+jobs:
+  build:
+    name: "Build"
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v2
+
+      - name: Install
+        run: yarn
+
+      - name: ESlint
+        run: yarn lint
+
+#      - name: Unit Testing
+#        run: yarn test:unit
+#
+#      - name: E2E Testing
+#        run: yarn test:e2e
+
+      - name: Build
+        run: yarn build-only --mode staging
+
+      - name: Create deployment artifact
+        env:
+          GITHUB_SHA: ${{ github.sha }}
+        run: tar -czf "${GITHUB_SHA}".tar.gz --exclude=*.git --exclude=node_modules *
+
+      - name: Store artifect for distribution
+        uses: actions/upload-artifact@v2
+        with:
+          name: app-build
+          path: ${{ github.sha }}.tar.gz
+
+  upload:
+    name: "Upload"
+    needs: build
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/download-artifact@v2
+        with:
+            name: app-build
+
+      - name: Upload
+        uses: appleboy/scp-action@master
+        with:
+          host: ${{ secrets.VPS_IP }}
+          username: ${{ secrets.VPS_USER }}
+          password: ${{ secrets.VPS_PASSWORD }}
+          port: ${{ secrets.VPS_PORT }}
+          source: ${{ github.sha }}.tar.gz
+          target: ${{ secrets.VPS_PATH }}/artifacts
+
+      - name: Extract archive and create directories
+        uses: appleboy/ssh-action@master
+        env:
+          GITHUB_SHA: ${{ github.sha }}
+        with:
+          host: ${{ secrets.VPS_IP }}
+          username: ${{ secrets.VPS_USER }}
+          password: ${{ secrets.VPS_PASSWORD }}
+          port: ${{ secrets.VPS_PORT }}
+          envs: GITHUB_SHA
+          script: |
+                mkdir -p "${{ secrets.VPS_PATH }}/releases/${GITHUB_SHA}"
+                tar xzf ${{ secrets.VPS_PATH }}/artifacts/${GITHUB_SHA}.tar.gz -C "${{ secrets.VPS_PATH }}/releases/${GITHUB_SHA}"
+
+  activate-release:
+    name: "Activate"
+    runs-on: ubuntu-latest
+    needs: [ build, upload ]
+
+    steps:
+      - name: Activate release
+        uses: appleboy/ssh-action@master
+        env:
+          GITHUB_SHA: ${{ github.sha }}
+          RELEASE_PATH: ${{ secrets.VPS_PATH }}/releases/${{ github.sha }}
+          ACTIVE_RELEASE_PATH: ${{ secrets.VPS_PATH }}/current
+          BASE_PATH: ${{ secrets.VPS_PATH }}
+        with:
+          host: ${{ secrets.VPS_IP }}
+          username: ${{ secrets.VPS_USER }}
+          password: ${{ secrets.VPS_PASSWORD }}
+          port: ${{ secrets.VPS_PORT }}
+          envs: GITHUB_SHA,RELEASE_PATH,ACTIVE_RELEASE_PATH,STORAGE_PATH,BASE_PATH,ENV_PATH,LARAVEL_ENV
+          script: |
+            ln -s -f ${BASE_PATH}/.env.staging $RELEASE_PATH
+            ln -s -n -f $RELEASE_PATH $ACTIVE_RELEASE_PATH
+            service nginx restart
