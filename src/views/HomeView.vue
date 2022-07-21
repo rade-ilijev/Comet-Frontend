@@ -2,7 +2,7 @@
   <main>
     <section id="welcome">
       <div class="hero">
-        <h1 style="color: #fff">{{ name }}</h1>
+        <h1 style="color: #fff">{{ name }} env</h1>
         <div class="left">
           <img src="../assets/logo.png" />
         </div>
