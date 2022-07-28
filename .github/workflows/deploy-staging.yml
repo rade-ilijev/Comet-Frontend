@@ -95,5 +95,5 @@ jobs:
           port: ${{ secrets.VPS_PORT }}
           envs: GITHUB_SHA,RELEASE_PATH,ACTIVE_RELEASE_PATH,STORAGE_PATH,BASE_PATH,ENV_PATH,LARAVEL_ENV
           script: |
-            cd ${{ ACTIVE_RELEASE_PATH }}
+            cd ${ACTIVE_RELEASE_PATH}
             npm server:prod
