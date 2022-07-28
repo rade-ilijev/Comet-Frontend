@@ -17,7 +17,7 @@ jobs:
         run: npm install
 
       - name: Build Prod
-        run: npm prod
+        run: npm run prod
 
 #      - name: ESlint
 #        run: yarn lint
@@ -96,4 +96,4 @@ jobs:
           envs: GITHUB_SHA,RELEASE_PATH,ACTIVE_RELEASE_PATH,STORAGE_PATH,BASE_PATH,ENV_PATH,LARAVEL_ENV
           script: |
             cd ${ACTIVE_RELEASE_PATH}
-            npm server:prod
+            npm run server:prod
