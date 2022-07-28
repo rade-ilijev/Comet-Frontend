@@ -17,7 +17,7 @@ jobs:
         run: npm install
 
       - name: Build Prod
-        run: npm run prod
+        run: npm run build
 
       - name: Create deployment artifact
         env:
@@ -86,4 +86,4 @@ jobs:
             ln -s -f ${BASE_PATH}/.env.staging $RELEASE_PATH
             ln -s -n -f $RELEASE_PATH $ACTIVE_RELEASE_PATH
             cd ${ACTIVE_RELEASE_PATH}
-            npm install
+            npm run prod
