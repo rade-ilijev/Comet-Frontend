@@ -19,18 +19,6 @@ jobs:
       - name: Build Prod
         run: npm run prod
 
-#      - name: ESlint
-#        run: yarn lint
-
-#      - name: Unit Testing
-#        run: yarn test:unit
-#
-#      - name: E2E Testing
-#        run: yarn test:e2e
-
-      - name: Build
-        run: yarn build-only --mode staging
-
       - name: Create deployment artifact
         env:
           GITHUB_SHA: ${{ github.sha }}
@@ -95,5 +83,7 @@ jobs:
           port: ${{ secrets.VPS_PORT }}
           envs: GITHUB_SHA,RELEASE_PATH,ACTIVE_RELEASE_PATH,STORAGE_PATH,BASE_PATH,ENV_PATH,LARAVEL_ENV
           script: |
+            ln -s -f ${BASE_PATH}/.env.staging $RELEASE_PATH
+            ln -s -n -f $RELEASE_PATH $ACTIVE_RELEASE_PATH
             cd ${ACTIVE_RELEASE_PATH}
-            npm run server:prod
+            npm install
