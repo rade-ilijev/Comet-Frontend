@@ -14,10 +14,13 @@ jobs:
       - uses: actions/checkout@v2
 
       - name: Install
-        run: yarn
+        run: npm install
 
-      - name: ESlint
-        run: yarn lint
+      - name: Build Prod
+        run: npm prod
+
+#      - name: ESlint
+#        run: yarn lint
 
 #      - name: Unit Testing
 #        run: yarn test:unit
@@ -92,6 +95,7 @@ jobs:
           port: ${{ secrets.VPS_PORT }}
           envs: GITHUB_SHA,RELEASE_PATH,ACTIVE_RELEASE_PATH,STORAGE_PATH,BASE_PATH,ENV_PATH,LARAVEL_ENV
           script: |
-            ln -s -f ${BASE_PATH}/.env.staging $RELEASE_PATH
-            ln -s -n -f $RELEASE_PATH $ACTIVE_RELEASE_PATH
-            service nginx restart
+#            ln -s -f ${BASE_PATH}/.env.staging $RELEASE_PATH
+#            ln -s -n -f $RELEASE_PATH $ACTIVE_RELEASE_PATH
+            cd ${{ ACTIVE_RELEASE_PATH }}
+            npm server:prod
