@@ -86,4 +86,4 @@ jobs:
             ln -s -f ${BASE_PATH}/.env.staging $RELEASE_PATH
             ln -s -n -f $RELEASE_PATH $ACTIVE_RELEASE_PATH
             cd $ACTIVE_RELEASE_PATH
-            npm run server:prod
+            npm run prod
