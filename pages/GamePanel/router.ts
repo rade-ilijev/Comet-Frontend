@@ -9,13 +9,13 @@ function createRouter() {
     history: import.meta.env.SSR ? createMemoryHistory() : createWebHistory(),
     routes: [
       {
-        path: '/gpanel/index',
-        component: () => import('./Home.vue'),
+        path: '/gpanel/dashboard',
+        component: () => import('./Dashboard.vue'),
       },
       {
-        path: '/gpanel/about',
-        component: () => import('./About.vue'),
-      },
+        path: '/gpanel/wallet',
+        component: () => import('./Wallet.vue'),
+      }
     ],
   })
 }

@@ -3,12 +3,13 @@
   This page is:
   <ul>
     <li>Rendered to HTML.</li>
-    <li>Interactive. <Counter /></li>
+    <li>Interactive. {{ auth.user }}</li>
   </ul>
 </template>
 
 <script lang="ts" setup>
-import Counter from './Counter.vue'
+import { useAuthStore } from "../composable/stores/login";
+const auth = useAuthStore()
 
-
+const user = auth.$state
 </script>

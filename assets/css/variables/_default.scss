@@ -1,0 +1,28 @@
+@import url(http://fonts.googleapis.com/css?family=Roboto+Slab|Open+Sans|Montserrat|Bebas+Neue|Space+Mono:400italic,700italic,400,700);
+@import url(https://fonts.googleapis.com/css2?family=Work+Sans:ital,wght@0,800;0,900;1,600&display=swap);
+
+// Font Variables
+$roboto-slab: 'Roboto Slab', serif;
+$open-sans: 'Open Sans', sans-serif;
+$montserrat: 'Montserrat', sans-serif;
+$bebas: 'Bebas Neue', sans-serif;
+$work-sans-bold: 'Work Sans', sens-serif;
+$space: 'Space Mono', sans-serif;
+
+//Colors
+$primary: #c62828;
+$primary-opacity: rgba(198, 40, 40, 0.8);
+$danger: #EB4C54;
+$info: #7DEBD8;
+$success: #57F287;
+$grey: #8E98A7;
+$white: #F9FAFB;
+$white-blue: #27E9D1;
+$orange: #FF7600;
+$blue: #0098FF;
+$background: #181818;//rgb(19, 18, 18);
+
+// Typography
+$font-size-base: 0.9rem;
+$line-height-base: 1.6;
+$dark-light-border: #1e1e1e;

@@ -1,0 +1,35 @@
+@import "variables/default";
+
+/* width */
+::-webkit-scrollbar {
+  width: 10px;
+}
+
+/* Track */
+::-webkit-scrollbar-track {
+  background: $background;
+}
+
+::-webkit-scrollbar-thumb {
+  -webkit-border-radius: 10px;
+  border-radius: 10px;
+  background-color: $dark-light-border;
+}
+
+/* Handle on hover */
+::-webkit-scrollbar-thumb:hover {
+  background: #232323;
+}
+
+body {
+  font-size: 16px;
+  font-family: $montserrat;
+  background: $background;
+  display: block;
+  color: #fff;
+  margin: 0;
+}
+
+a {
+  text-decoration: none;
+}

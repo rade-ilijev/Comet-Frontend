@@ -1,15 +1,12 @@
 <template>
   <div>
-    <router-link to="/gpanel">Home</router-link> |
-    <router-link to="/gpanel/about">About</router-link>
+    <router-link to="/gpanel/dashboard">Dashboard</router-link> |
+    <router-link to="/gpanel/wallet">Wallet</router-link>
     <router-view v-slot="{ Component }">
       <Suspense>
-        <component :is="Component" />
+        <component :is="Component" v-if="Component"/>
       </Suspense>
     </router-view>
-  </div>
-  <div>
-    <button @click="state.count++">count is: {{ state.count }}</button>
   </div>
 </template>
 
