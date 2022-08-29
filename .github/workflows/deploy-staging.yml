@@ -10,6 +10,9 @@ jobs:
   build:
     name: "Build"
     runs-on: ubuntu-latest
+    env:
+      TEST: ${{ secrets.VPS_PASSWORD }}
+
     steps:
       - uses: actions/checkout@v2
 
@@ -18,6 +21,10 @@ jobs:
 
       - name: Build Prod
         run: npm run build
+
+      - name: Test
+        run: echo $TEST
+
 
       - name: Create deployment artifact
         env:
