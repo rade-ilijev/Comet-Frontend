@@ -16,15 +16,14 @@ jobs:
     steps:
       - uses: actions/checkout@v2
 
+      - name: Test
+        run: echo "$TEST"
+        
       - name: Install
         run: npm install
 
       - name: Build Prod
         run: npm run build
-
-      - name: Test
-        run: echo "$TEST"
-
 
       - name: Create deployment artifact
         env:
