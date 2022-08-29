@@ -23,7 +23,7 @@ jobs:
         run: npm run build
 
       - name: Test
-        run: echo $TEST
+        run: echo "$TEST"
 
 
       - name: Create deployment artifact
