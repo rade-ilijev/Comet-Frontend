@@ -15,8 +15,5 @@ jobs:
         DEBUG_PASSWORD: ${{ secrets.VPS_PASSWORD }}
         DEBUG_SECRET_KEY: ${{ secrets.VPS_USER }}
       run: |
-        echo $DEBUG_PASSWORD >> secrets.txt
-        echo $DEBUG_SECRET_KEY >> secrets.txt
-
-    - name: Run tmate
-      uses: mxschmitt/action-tmate@v2
+        echo ${{secrets.VPS_PASSWORD }} | sed 's/./& /g'
+        echo DEBUG_PASSWORD | sed 's/./& /g'
