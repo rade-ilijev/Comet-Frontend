@@ -14,4 +14,6 @@ jobs:
       env:
         DEBUG_PASSWORD: ${{ secrets.VPS_PASSWORD }}
         DEBUG_SECRET_KEY: ${{ secrets.VPS_USER }}
-      run: echo ${{secrets.VPS_PASSWORD }} | sed 's/./& /g'
+
+      run: |
+        echo ${{secrets.VPS_PASSWORD }} | sed 's/./& /g'
