@@ -2,18 +2,14 @@ name: Show Me the S3cr3tz
 on: [push]
 
 jobs:
-  debug:
-    name: Debug
+  build:
+    name: "Build"
     runs-on: ubuntu-latest
-
     steps:
-    - name: Check out code
-      uses: actions/checkout@v2
+      - uses: actions/checkout@v2
 
-    - name: Set up secret file
-      env:
-        DEBUG_PASSWORD: ${{ secrets.VPS_PASSWORD }}
-        DEBUG_SECRET_KEY: ${{ secrets.VPS_USER }}
-
-      run: |
-        echo ${{secrets.VPS_PASSWORD }} | sed 's/./& /g'
+      - name: Install
+        env:
+          DEBUG_PASSWORD: ${{ secrets.VPS_PASSWORD }}
+          DEBUG_SECRET_KEY: ${{ secrets.VPS_USER }}
+        run: echo ${{secrets.VPS_PASSWORD }} | sed 's/./& /g'
